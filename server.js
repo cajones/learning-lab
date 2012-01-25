@@ -1,9 +1,11 @@
 var http = require('http');
 
 var hosting = {
-	port : process.argv[2] || 80
+	port : process.argv[2] 
+			|| process.env.PORT 
+			|| process.env.C9_PORT 
+			|| 80
 };
-console.log(hosting.port);
 
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
