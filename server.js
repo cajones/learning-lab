@@ -1,4 +1,7 @@
 var http = require('http');
+var express = require('express');
+var blackjack = require('./blackjack');
+
 
 var hosting = {
 	port : process.argv[2] 
@@ -7,7 +10,19 @@ var hosting = {
 			|| 80
 };
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Goodbye Cruel World\n');
-}).listen(hosting.port);
+
+var application = express.createServer();
+
+application.configure(function() {
+	application.set('view engine', 'jade');
+	application.set('view options', {layout:false});
+});
+
+
+application.get('/', function(req, res){
+
+	var hand = new blackjack.Hand();
+	res.render('index.jade', hand);
+});
+
+application.listen(hosting.port);
