@@ -1,5 +1,3 @@
-var should = require('should');
-
 describe('A game of blackjack', function () {
 	var blackjack = require('../blackjack.js');
 
