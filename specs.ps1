@@ -1,0 +1,1 @@
+mocha -u bdd -R spec specs/hand.spec.js
