@@ -14,6 +14,7 @@ var hosting = {
 var application = express.createServer();
 
 application.configure(function() {
+	application.use(express.static(__dirname + '/public'));
 	application.set('view engine', 'jade');
 	application.set('view options', {layout:false});
 });
